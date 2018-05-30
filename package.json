@@ -1,0 +1,19 @@
+{
+  "name": "newsmagnet",
+  "version": "1.0.0",
+  "description": "A news website that fetches news from NewsAPI",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DotunAj/newsmagnet.git"
+  },
+  "author": "Ajala Ayodotun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/DotunAj/newsmagnet/issues"
+  },
+  "homepage": "https://github.com/DotunAj/newsmagnet#readme"
+}
