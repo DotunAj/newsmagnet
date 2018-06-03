@@ -54,8 +54,6 @@ body {
     color: #2e2e2eb6;
     align-items: center;
     font-size: 14pt;
-
-   
 }
 
 #search:hover{
@@ -66,7 +64,6 @@ body {
     background-color: inherit;
     border: none;
     min-height: 100%;
-    padding: 5px;
     font: inherit;
     font-size: 10.6pt;   
 }
@@ -75,15 +72,27 @@ body {
     outline: none;
 }
 
-.container{
-    max-width: 100vh;
+.posts-container{
+    margin: auto;
+    max-width: 1000px;
+}
+
+.container{   
     padding: 20px 15px 0 15px;
+}
+
+.posts{
+    display: grid;
+    grid-gap: 30px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-rows: repeat(autofill, 1fr); 
 }
 
 .post{
     box-shadow: 3px 6px 8px rgba(0, 0, 0, 0.15), -3px 6px 8px rgba(0, 0 ,0 , 0.10);
     transition: all 0.5s ease-out;
-    margin-bottom: 15px;
+    max-width: 380px;
+    margin: 0 auto 25px auto;
 }
 
 .post:hover{
