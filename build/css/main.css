@@ -82,17 +82,26 @@ body {
 }
 
 .posts{
-    display: grid;
-    grid-gap: 30px;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-template-rows: repeat(autofill, 1fr); 
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+}
+.posts article{
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex: 1 1 300px;
 }
 
 .post{
     box-shadow: 3px 6px 8px rgba(0, 0, 0, 0.15), -3px 6px 8px rgba(0, 0 ,0 , 0.10);
     transition: all 0.5s ease-out;
     max-width: 380px;
-    margin: 0 auto 25px auto;
+    margin: 0 10px 25px 10px;
+    height: 420px;
+
+    
 }
 
 .post:hover{
@@ -112,6 +121,7 @@ body {
 
 .post-content{
     padding: 0 10px 20px 10px;
+    
 }
 .post-content h3{
     font-size: 15pt;
@@ -119,8 +129,11 @@ body {
     color: rgba(0, 0, 0, 0.80);
 }
 
-.post-content p{
+.post-content .description{
     color: rgba(0, 0, 0, 0.70);
+    height: 100px;
+    overflow: hidden;
+    overflow-y: auto;
 }
 .post-source{
     display: flex;
