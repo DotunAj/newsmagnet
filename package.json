@@ -4,7 +4,7 @@
   "description": "A news website that fetches news from NewsAPI",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "gulp"
   },
   "repository": {
     "type": "git",
