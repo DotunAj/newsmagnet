@@ -22,10 +22,9 @@ body {
 }
 
 #logo {
-    max-height: 65px;
-
-
+    max-height: 65px;     
 }
+
 
 .mobileNav{
     display: flex;
@@ -66,15 +65,46 @@ body {
     min-height: 100%;
     font: inherit;
     font-size: 10.6pt;   
+    flex: 1 1 auto;
 }
 
 #search input:focus{
     outline: none;
 }
 
+@media screen and (min-width: 1000px){
+    header nav {
+        display: flex;
+        background-color: #fff;
+        border-bottom: 3px solid var(--primary);
+        justify-content: space-between;
+        padding: 0px 40px 0 40px;
+    }
+    .mobileNav{
+        justify-content: flex-end;
+        flex: 0.5 1 auto;
+        background-color: inherit;
+        border: none;
+    }
+    .logoContainer{
+        justify-content: flex-start;   
+        padding-top: 0 !important ;    
+    }
+    #logo {
+        max-height: 65px; 
+    }
+    #search{
+        flex: 0.5 1 auto;
+        margin-right: 20px;
+    }
+    #home{
+        display: none;
+    }
+}
+
 .posts-container{
     margin: auto;
-    max-width: 1000px;
+    max-width: 1080px;
 }
 
 .container{   
@@ -99,7 +129,7 @@ body {
     transition: all 0.5s ease-out;
     max-width: 380px;
     margin: 0 10px 25px 10px;
-    height: 420px;
+    height: 380px;
 
     
 }
@@ -131,10 +161,11 @@ body {
 
 .post-content .description{
     color: rgba(0, 0, 0, 0.70);
-    height: 100px;
+    height: 60px;
     overflow: hidden;
     overflow-y: auto;
 }
+
 .post-source{
     display: flex;
     color: rgba(0 ,0 ,0 , 0.60);
@@ -159,7 +190,7 @@ body {
     color: white;
     font-size: 9pt;
     font-weight: bold;
-    box-shadow: 0 5px 3px rgba(0,0,0, 0.20); 
+    box-shadow: 0 5px 3px rgba(0,0,0, 0.25); 
     margin-top: 10px;
 }
 
