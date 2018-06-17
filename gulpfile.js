@@ -30,7 +30,7 @@ gulp.task('css', () =>{
 // es6 to es5
 
 gulp.task('scripts', () => {
-    gulp.src('src/js/*.js')
+    gulp.src('src/js/index.js')
         .pipe(sourcemaps.init())
         .pipe(babel())
         .pipe(concat("main.js"))
@@ -39,10 +39,17 @@ gulp.task('scripts', () => {
         .pipe(connect.reload());
 });
 
+gulp.task('sw', () => {
+    gulp.src('src/js/sw.js')
+        .pipe(babel())
+        .pipe(gulp.dest('build/js'))
+        .pipe(connect.reload());
+});
+
 gulp.task('watch', ()=>{
     gulp.watch('src/*.html', ['html']);
     gulp.watch('src/css/*.css', ['css']);
-    gulp.watch('src/js/*.js', ['scripts']);
+    gulp.watch('src/js/*.js', ['scripts', 'sw']);
 })
 
 gulp.task('default', ['connect', 'watch']);

@@ -124,6 +124,10 @@ body {
         background: var(--primary) !important;
     }
 
+    .country-filter div{
+        border: 1px solid #ce022f !important;
+    }
+
     .country-filter div:hover{
         background: #ce022f !important;
     }
@@ -147,6 +151,7 @@ body {
     display:flex;
     width:100%;
     justify-content: center;
+    border: 1px solid #3d3d3d;
 }
 
 .country-filter a{
