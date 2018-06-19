@@ -1,9 +1,8 @@
 if(navigator.serviceWorker){
-    navigator.serviceWorker.register('/js/sw.js')
-    .then(() => {
-        console.log("registered")
-    })
-    .catch((err) => {
-        console.log(err);
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js')
+        .catch((err) => {
+            console.log(err);
+        })
     })
 }
