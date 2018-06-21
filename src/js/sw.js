@@ -7,7 +7,8 @@ self.addEventListener('install', (event) => {
                 'css/main.css',
                 'js/main.js',
                 'https://use.fontawesome.com/releases/v5.0.10/js/all.js',
-                'assets/fallback.jpeg'
+                'assets/fallback.jpeg',
+                'assets/logo.png'
             ]);
         })
     )
@@ -15,10 +16,24 @@ self.addEventListener('install', (event) => {
 
 self.addEventListener('fetch', (event) => {
     //Replaces broken images with fallback image
+    if (event.request.url.match(/\.(jpeg|jpg|gif|png)$/) != null) {
+        event.respondWith(fetch(event.request)
+        .then((response) => {
+            if(!response.ok){
+                return caches.match('assets/fallback.jpeg');
+            }
+            return response;
+        })
+        .catch((err) => {
+            console.error(err);
+            return caches.match(event.request)
+        }))
+        return;
+    }
+
     event.respondWith(
         caches.match(event.request)
             .then((response) => {
-                //if(response.status >= 300  && (response.url.match(/\.(jpeg|jpg|git|png)$/) != null) ) return caches.match('assets/fallback.jpeg');
                 return response || fetch(event.request);
             })
     )
