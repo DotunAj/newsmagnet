@@ -15,7 +15,6 @@ self.addEventListener('fetch', function (event) {
             }
             return response;
         }).catch(function (err) {
-            console.error(err);
             return caches.match(event.request);
         }));
         return;

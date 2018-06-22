@@ -26,7 +26,12 @@
     "gulp-connect": "^5.5.0",
     "gulp-sourcemaps": "^2.6.4",
     "gulp-webserver": "^0.9.1",
+    "rollup": "^0.61.1",
     "webpack": "^4.10.2",
-    "webpack-dev-server": "^3.1.4"
+    "webpack-dev-server": "^3.1.4",
+    "webpack-stream": "^4.0.3"
+  },
+  "dependencies": {
+    "newsapi": "^2.2.2"
   }
 }
