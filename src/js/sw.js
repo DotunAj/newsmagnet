@@ -5,7 +5,7 @@ self.addEventListener('install', (event) => {
             return cache.addAll([
                 '/',
                 'css/main.css',
-                'js/main.js',
+                'js/bundle.js',
                 'https://use.fontawesome.com/releases/v5.0.10/js/all.js',
                 'assets/fallback.jpeg',
                 'assets/logo.png'
@@ -16,17 +16,35 @@ self.addEventListener('install', (event) => {
 
 self.addEventListener('fetch', (event) => {
     //Replaces broken images with fallback image
-    if (event.request.url.match(/\.(jpeg|jpg|gif|png)$/) != null) {
+    if ((event.request.url.match(/\.(jpeg|jpg|gif|png)$/) != null)){
+        if (event.request.url.includes('www.vanguardngr.com')){
+            event.respondWith(
+                caches.match('assets/fallback.jpeg')
+            )
+            return;
+        }
+
         event.respondWith(fetch(event.request)
         .then((response) => {
-            if(!response.ok){
+            if(response.status >= 300){
                 return caches.match('assets/fallback.jpeg');
             }
             return response;
         })
         .catch((err) => {
-            return caches.match(event.request)
+            console.log(err);
+            return caches.match('assets/fallback.jpeg');
         }))
+
+
+
+        return;
+    }
+
+    if (event.request.url.includes('null')){
+        event.respondWith(
+            caches.match('assets/fallback.jpeg')
+        )
         return;
     }
 

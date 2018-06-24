@@ -3,7 +3,7 @@ const webpack = require('webpack');
 const webpackStream = require('webpack-stream');
 const webpackConfig = require('./webpack.config.js')
 const sourcemaps = require('gulp-sourcemaps');
-const concat = require('gulp-concat');
+//const concat = require('gulp-concat');
 const babel = require('gulp-babel');
 var webserver = require('gulp-webserver');
 
@@ -33,8 +33,10 @@ gulp.task('css', () =>{
 
 gulp.task('scripts', () => {
     gulp.src('src/js/index.js')
+        .pipe(sourcemaps.init())
         .pipe(babel())
         .pipe(webpackStream(webpackConfig), webpack)
+        .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('build/js'))
 });
 
@@ -44,12 +46,11 @@ gulp.task('sw', () => {
         .pipe(gulp.dest('build'))
 });
 
-
-
 gulp.task('watch', () => {
     gulp.watch('src/*.html', ['html']);
     gulp.watch('src/css/*.css', ['css']);
-    gulp.watch('src/js/*.js', ['scripts', 'sw']);
+    gulp.watch('src/js/index.js', ['scripts']);
+    gulp.watch('src/js/sw.js', ['sw']);
 })
 
 gulp.task('default', ['connect','html','css', 'scripts', 'sw', 'watch']);
