@@ -3,12 +3,12 @@ self.addEventListener('install', (event) => {
         caches.open('newsmagnet-v1')
         .then((cache) => {
             return cache.addAll([
-                '/',
-                'css/main.css',
-                'js/bundle.js',
+                './',
+                './css/main.css',
+                './js/bundle.js',
                 'https://use.fontawesome.com/releases/v5.0.10/js/all.js',
-                'assets/fallback.jpeg',
-                'assets/logo.png'
+                './assets/fallback.jpeg',
+                './assets/logo.png'
             ]);
         })
     )
@@ -19,7 +19,7 @@ self.addEventListener('fetch', (event) => {
     if ((event.request.url.match(/\.(jpeg|jpg|gif|png)$/) != null)){
         if (event.request.url.includes('www.vanguardngr.com')){
             event.respondWith(
-                caches.match('assets/fallback.jpeg')
+                caches.match('./assets/fallback.jpeg')
             )
             return;
         }
@@ -27,13 +27,13 @@ self.addEventListener('fetch', (event) => {
         event.respondWith(fetch(event.request)
         .then((response) => {
             if(response.status >= 300){
-                return caches.match('assets/fallback.jpeg');
+                return caches.match('./assets/fallback.jpeg');
             }
             return response;
         })
         .catch((err) => {
             console.log(err);
-            return caches.match('assets/fallback.jpeg');
+            return caches.match('./assets/fallback.jpeg');
         }))
 
 
