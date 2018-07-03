@@ -9,7 +9,7 @@ var webserver = require('gulp-webserver');
 
 
 gulp.task('connect', function() {
-  gulp.src('build')
+  gulp.src('docs')
     .pipe(webserver({
       livereload: true,
       directoryListing: false,
@@ -21,12 +21,12 @@ gulp.task('connect', function() {
 
 gulp.task('html', () =>{
     gulp.src('src/*.html')
-        .pipe(gulp.dest('build'))
+        .pipe(gulp.dest('docs'))
 });
 
 gulp.task('css', () =>{
     gulp.src('src/css/*.css')
-        .pipe(gulp.dest('build/css'))
+        .pipe(gulp.dest('docs/css'))
 });
 
 // es6 to es5
@@ -37,13 +37,13 @@ gulp.task('scripts', () => {
         .pipe(babel())
         .pipe(webpackStream(webpackConfig), webpack)
         .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('build/js'))
+        .pipe(gulp.dest('docs/js'))
 });
 
 gulp.task('sw', () => {
     gulp.src('src/js/sw.js')
         .pipe(babel())
-        .pipe(gulp.dest('build'))
+        .pipe(gulp.dest('docs'))
 });
 
 gulp.task('watch', () => {
