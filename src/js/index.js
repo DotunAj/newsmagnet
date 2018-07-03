@@ -5,7 +5,7 @@ const posts = document.querySelector('.posts');
 
 if(navigator.serviceWorker){
     window.addEventListener('load', () => {
-        navigator.serviceWorker.register('sw.js')
+        navigator.serviceWorker.register('./sw.js')
         .catch((err) => {
             console.log(err);
         })
